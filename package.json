@@ -1,0 +1,34 @@
+{
+  "name": "tdd-in-react",
+  "version": "1.0.0",
+  "description": "http://postd.cc/getting-started-with-tdd-in-react/",
+  "main": "setup.js",
+  "dependencies": {
+    "babel-core": "^6.10.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.3.0",
+    "jsdom": "^9.2.1",
+    "quik": "^0.6.0",
+    "react": "^15.1.0",
+    "react-addons-test-utils": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "sinon": "^1.17.4"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "quik"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/omiend/tdd-in-react.git"
+  },
+  "author": "omiend",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omiend/tdd-in-react/issues"
+  },
+  "homepage": "https://github.com/omiend/tdd-in-react#readme"
+}
