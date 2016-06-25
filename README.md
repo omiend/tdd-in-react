@@ -13,17 +13,14 @@
 ```
 $ node -v
 v6.2.0
-```
-
-### テスト実行
-
-```
 $ npm install -g quik
 $ npm install -g mocha
 $ npm install
 ```
 
 `-g` をつけると、Globalなinstallになり、当該パッケージのコマンドが何処からでも利用できるようになる。
+
+### テスト実行
 
 ```
 $ quik
@@ -35,3 +32,5 @@ webpack built c1ea80f4159549870fd5 in 12122ms
   --> GET /index.js 200 4,921ms 1.9mb
   <-- GET /__webpack_hmr
 ```
+
+ブラウザが立ち上がる
