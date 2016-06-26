@@ -14,7 +14,7 @@ export class BeerListContainer extends Component {
     return (
       <div>
         <InputArea onSubmit={this.addItem}/>
-        <BeerList/>
+        <BeerList items={this.state.beers}/>
       </div>
     );
   }
@@ -34,17 +34,22 @@ export class InputArea extends Component {
       text: ''
     };
     this.setText = this.setText.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
  
   setText(event) {
     this.setState({text: event.target.value});
   }
 
+  handleClick() {
+    this.props.onSubmit(this.state.text);
+  }
+ 
   render() {
     return (
       <div>
         <input value={this.state.text} onChange={this.setText}/>
-        <button>Add</button>
+        <button onClick={this.handleClick}>Add</button>
       </div>
     );
   }
@@ -58,6 +63,16 @@ InputArea.PropTypes = {
  
 export class BeerList extends Component {
   render() {
-    return <ul/>
+    return this.props.items ?
+      (<ul>
+        {this.props.items.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul>)
+    : null;
   }
 }
+
+BeerList.propTypes = {
+  items: React.PropTypes.array.isRequired
+};

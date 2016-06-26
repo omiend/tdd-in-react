@@ -1,4 +1,5 @@
 import React from 'react';
+import { spy } from 'sinon';
 import { expect } from 'chai';
 import { shallow, mount } from 'enzyme';
 import { BeerListContainer } from './components';
@@ -55,5 +56,42 @@ describe('BeerListContainer', () => {
       expect(wrapper.state('text')).to.equal('Resin');
       expect(input.prop('value')).to.equal('Resin');
     });
+  });
+
+  it('should call onSubmit when Add is clicked', () => {
+    const addItemSpy = spy();
+    const wrapper = shallow(<InputArea onSubmit={addItemSpy}/>);
+    wrapper.setState({text:'Octoberfest'});
+    const addButton = wrapper.find('button');
+ 
+    addButton.simulate('click');
+ 
+    expect(addItemSpy.calledOnce).to.equal(true);
+    expect(addItemSpy.calledWith('Octoberfest')).to.equal(true);
+  });
+
+  describe('BeerList', () => {
+    it('should render zero items', () => {
+      const wrapper = shallow(<BeerList items={[]}/>);
+      expect(wrapper.find('li')).to.have.length(0);
+    });
+   
+    it('should render undefined items', () => {
+      const wrapper = shallow(<BeerList items={undefined}/>);
+      expect(wrapper.find('li')).to.have.length(0);
+    });
+   
+    it('should render some items', () => {
+      const items = ['Sam Adams', 'Resin', 'Octoberfest'];
+      const wrapper = shallow(<BeerList items={items}/>);
+      expect(wrapper.find('li')).to.have.length(3);
+    });
+  });
+  
+  it('renders the items', () => {
+    const wrapper = mount(<BeerListContainer/>);
+    wrapper.instance().addItem('Sam Adams');
+    wrapper.instance().addItem('Resin');
+    expect(wrapper.find('li').length).to.equal(2);
   });
 });
